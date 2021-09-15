@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="./src/main.css" />
+  </head>
+
+  <body>
+    <div class="contenedor">
+      <form class="formulario" id="iniciarSesion">
+        <h1 class="formulario__titulo">Iniciar Sesión</h1>
+        <div class="formulario__mensaje formulario__mensaje--error"></div>
+        <div class="formulario__entrada-grupo">
+          <input
+            type="text"
+            class="formulario__entrada"
+            id="entradaUsuario"
+            autofocus
+            placeholder="Nombre de usuario"
+          />
+          <div class="formulario__entrada-error-mensaje"></div>
+        </div>
+        <div class="formulario__entrada-grupo">
+          <input
+            type="password"
+            class="formulario__entrada"
+            id ="entradaContrasena"
+            placeholder="Contraseña"
+          />
+          <div class="formulario__entrada-error-mensaje"></div>
+        </div>
+        <button class="formulario__boton" id ="formulario__boton--iniciarS" type="submit">Iniciar sesión</button>
+        <p class="formulario__texto">
+          <a href="#" class="formulario__enlace">¿Olvidó su contraseña?</a>
+        </p>
+        <p class="formulario__texto">
+          <a class="formulario__enlace" id="enlaceCreacionCuenta"
+            >Crear cuenta.</a
+          >
+        </p>
+      </form>
+      <form class="formulario formulario--oculto" id="crearCuenta">
+        <h1 class="formulario__titulo">Crear cuenta</h1>
+        <div class="formulario__mensaje formulario__mensaje--error"></div>
+        <div class="formulario__entrada-grupo">
+          <input
+            type="text"
+            id="inscripcionNombreUsuario"
+            class="formulario__entrada"
+            autofocus
+            placeholder="Nombre de usuario"
+          />
+          <div class="formulario__entrada-error-mensaje"></div>
+        </div>
+        <div class="formulario__entrada-grupo">
+          <input
+            type="text"
+            class="formulario__entrada"
+            placeholder="Correo electrónico"
+          />
+          <div class="formulario__entrada-error-mensaje"></div>
+        </div>
+        <div class="formulario__entrada-grupo">
+          <input
+            type="password"
+            class="formulario__entrada"
+            placeholder="Contraseña"
+          />
+          <div class="formulario__entrada-error-mensaje"></div>
+        </div>
+        <div class="formulario__entrada-grupo">
+          <input
+            type="password"
+            class="formulario__entrada"
+            placeholder="Confirmar contraseña"
+          />
+          <div class="formulario__entrada-error-mensaje"></div>
+        </div>
+        <button class="formulario__boton" type="submit">Continuar</button>
+        <p class="formulario__texto">
+          <a class="formulario__enlace" id="enlaceInicioSesion"
+            >¿Ya tienes una cuenta? Inicia sesión.</a
+          >
+        </p>
+      </form>
+    </div>
+    <script src="./src/main.js"></script>
+  </body>
+</html>
+
+<!--
+    OJO: Movi los demas comentarios a una copia externa del documento para facilitar la edicion del archivo
+    observaciones generales sobre HTML:
+1. es el encargado de disponer los elementos en la página, esto es, definir qué son y dónde van.
+2. debe iniciar declaron el tipo de documento así: "<!DOCTYPE html>"
+3. Se estructura a partir de ELEMENTOS, identificados con TAGS:
+    3.1 Los tags tienen la siguiente estructura:
+        <tag de apertura[body/div/p/a...] | atributos [class/id/type...]>
+        [cuerpo del tag] </[tag de cierre]> (notése el guión en el tag de cierre)
+            Versión simple: <tag atributo="">
+                            cuerpo del elemento 
+                            </tag>
+    3.2 tipos de tag:
+        3.2.1 <html>: abarca el cuerpo del documento de principio a fin
+                      recibe como parámetro el lenguaje del sitio(inglés, español, etc)
+        3.2.2 <head>: la cabecera del documento, incluye información general relacionada
+                      con el título que se muestra arriba de la página y los motores de búsqueda
+        3.2.3 <body>: el cuerpo del documento, aquí se dispondrán los elementos que constituirán 
+                      la página como tal
+        3.2.4 <div>:  una división libre, funcióna similar a lo que sería un corchete, se usa para delimitar
+        3.2.5 <form>: formulario se usa para contener campos de entrada de datos (?)
+        3.2.6 <h[1-6]>: Titular, se usa para inluir una cabecera (header) de texto, se numeran de uno a 6
+                        no se recomienda usar gratuitamente, estan jerarquizados(1>6)
+        3.2.7 <input type="">: crea el campo de entrada de datos
+        3.2.8 <button type="">: un botón
+        3.2.9 <p>: Texto estático
+        3.2.10 <a>: hipervinculo, permite redireccionar a otra parte
+        3.2.11 <script>: ubica el directorio de JS
+    3.3 los atributos definen/marcan el contenido del tag, 
+        en este caso se usaron los siguientes:
+        3.3.1 class="": asigna al elementouna clasificación global (esto es, varios elementos pueden pertenecer 
+                        a la misma class) para poder ser seleccionado(invocado) desde CSS (yJS?)
+        3.3.2 id="": igual a class pero este es único, solo puede estar asociado a un elemento
+                     usar con discreción. Ambos son sensibles a Mayúsculas ("A"!="a"
+        3.2.3 type="": designa el tipo de elemento (si es un campo de contraseña o texto por ejemplo)
+        3.2.4 href="": contiene el hipervinculo)
+    RECOMENDACIÓN: PARA VER QUÉ HACE QUÉ TANTO EN EL HTML COMO EN EL CSS:
+     ABRA EL DOCUMENTO EN UN NAVEGADOR, 
+     BORRE O CAMBIE LA PARTE QUE QUIERA ANALIZAR,
+    IDENTIFIQUE QUÉ CAMBIÓ EN EL NAVEGADOR-->

@@ -1,0 +1,170 @@
+/* Este es el archivo CSS que definirá los estilos de la página, el html lo toma de la sección
+<head> en donde está el <link> (línea 10, sujeto a cambio).
+El css se escribe seleccionando un elemento, class o id --(para mas información sobre esto refiérase 
+a los comentarios al final del html y a la documentación)--
+seguido de corchetes {}, dentro de los corchetes se definen los atributos de la selección presente,
+en caso de que una parte sea seleccionada multiples veces se tomará la que tenga mayor especificidad (id>clase>elemento) o la que se ponga más abajo en el código
+para seleccionar una class escriba punto seguido del nombre de la clase,
+para seleccionar una id escriba # seguido del nombre del id
+puede incluir multiples criterios de seleccion, ejemplos cortos, hay muchas formas de hacerlo:
+    seleccionar todos los párrafos que se encuentren dentro de divisiones 
+            (independiente de cuantos ancestros[niveles] 
+            haya entre ellos, por ejemplo seleccionará 
+            un párrafo que este dentro de un form 
+            si este esta dentro de una división): 
+        div p {}
+        *la sintaxis específica es "ancestro[ESPACIO]hijo {}"*
+    seleccionar todos los elementos de un tipo que tengan una clase:
+    EjEMPLO: h1.contenedor{} seleccionará todos los tags header1 identificados con la class "contenedor"
+    Existen muchas combinaciones para seleccionar combinaciones de clases, tipos e id´s que permiten aplicar el estilo con presicion.  
+    para identificar la sección seleccionada en cada parte:
+        en el codigo html: copie el nombre de la selección (omita el seleccionador como tal [. | # | >* | etc...]
+                            busque el nombre con Ctrl+F en el Html
+        en el navegador: use las herramientas de desarrollador, busque la seccion relevante y resalte pasando su mouse sobre ella)   
+*/
+body{
+    /*crea atributos personalizados de tipo color para ser invocados más adelante, 
+    para referencia los terminos en inglés (color incluído[CREO QUE EN EL CASO DE LAS VARIABLES SE LE PUEDE PONER COMO UNO QUIERA]) estan reservados, configuran parametros
+    como tamaño, margen, poscición, color o el comportamiento de su aspecto (ajustarse a un cambio en el tamaño de la pantalla,
+    ocultarse, etc), los nombres en español son nombres personalizados para guardar valores específicos*/
+    --color-primario: #009579;
+    --color-primario-oscuro: #007f67;
+    --color-secundario: #252c6a;
+    --color-error: #cc3333;
+    --color-error-claro: #e98181;
+    --color-exito: #4bb544;
+    --borde-radio: 4px;
+    /*fin de la creación de variables, los colores se cuadran en escala RGB (red green blue/ rojo verde azul)*/
+    margin: 0;
+    height: 100vh;
+    /*las siguientes líneas se encargan de centrar el contenido de la pagina en todo momento*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* tamaño de base de la letra*/
+    font-size: 18px;
+    /* formato del fondo, puede usarse una url para usar una imagen o incluso un gif de fondo*/
+    background: var(--color-primario);
+    background-size: cover;
+}
+/*selección de la clase contenedor, está definida en la línea (16, sujeto a cambio,)
+abarca la totalidad de los elementos mostrados en la página*/
+.contenedor {
+    width: 400px;
+    max-width: 400px;
+    margin: 1rem;
+    /*definición de padding https://developer.mozilla.org/es/docs/Web/CSS/padding
+     es similar a un margen, es como la diferencia entre el margen de proposito estético para mostrar al usuario
+     y un margen para definir un espacio de desarrollo
+     1rem= tamaño de la fuente (linea 40)*/
+    padding: 2rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    /*notése aca como la variable borde radio definida arriba se usa para asignar la propiedad 
+    border-radius de los elementos con class = "contenedor" que en este caso son todos*/
+    border-radius: var(--borde-radio);
+    background: #ffff;
+
+}
+.contenedor, /*esta es la clase en el input field de la clave ->*/.formulario__entrada, .formulario__boton{
+    font: 500 1rem 'Arial', sans-serif;
+}
+/*esto cambia entre mostrar el formulario de inicio y de creación de cuenta, se añadió posteriormente a*/
+.formulario--oculto{
+    display: none;
+}
+/*esta es la parte que define el formulario como tal
+el seleccionador ">*" selecciona todo (*) lo que esté directamente dentro(>), 
+que sea hijo directo, de la clase (formulario)
+la función de esta sección es eliminar márgenes adicionales */
+.formulario > *:first-child {
+    margin-top: 0;
+}
+.formulario > *:last-child {
+    margin-bottom: 0;
+}
+.formulario__titulo{
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.formulario__mensaje{
+    text-align: center;
+    margin-bottom: 1rem;
+
+}
+/*notese que esta clase NO éxiste en el html, se implementará dentro de JS para que muestre el mensaje correcto según el caso*/
+.formulario__mensaje--exito{
+    color: var(--color-exito)
+}
+.formulario__mensaje--error{
+    color: var(--color-error);
+}
+
+.formulario__entrada-grupo{
+    margin-bottom: 1rem;
+}
+.formulario__entrada{
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--borde-radio);
+    border: 1px solid #dddddd;
+    outline: none;
+    background: #eeeeee;
+    transition: background 0.2s, border-color 0.2s;
+}
+/*Esta parte es interesante, resalta los campos de entrada y pone sus fondos blancos
+ cuando estén seleccionados, hace que se vea limpio y fluido*/
+.formulario__entrada:focus{
+    border-color: var(--color-primario);
+    background-color: #ffffff;
+}
+.formulario__mensaje--error{
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+.formulario__entrada-error-mensaje{
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-error);
+}
+.formulario__boton{
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border: none;
+    border-radius: var(--borde-radio);
+    outline: none;
+    cursor: pointer;
+    background: var(--color-primario);
+}
+
+/*esto resalta el botón de inicio de Sesión y reduce su tamaño en 2% cuando se hace click en el*/
+.formulario__boton:hover{
+    background:var(--color-primario-oscuro) ;
+}.formulario__boton:active{
+    transform: scale(0.98);
+}
+.formulario__boton--error-bloqueado{
+    background-color: var(--color-error-claro);
+    color: var(--color-error);
+
+}
+.formulario__boton--error-bloqueado:hover{
+    background-color:var(--color-error) ;
+    color:var(--color-error-claro) ;
+}
+.formulario__texto{
+    text-align: center;
+}
+.formulario__enlace{
+    color: var(--color-secundario);
+    text-decoration: none;
+    cursor: pointer;
+}
+.formulario__enlace:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <!-- este link le indica al html donde buscar el archivo de css que definirá el estilo-->
+    <link rel="stylesheet" href="./src/main.css">
+</head>
+
+<body>
+    <!-- Se crea una división [div] con clasificación [class] 
+        de "contenedor"-->
+    <div class="contenedor">
+        <!-- Se crea un formulario [form] con class de "formulario" 
+            e identificación [id] única de "iniciarSesion" 
+            Nota: se duplicará para el form de inscripción-->
+        <form class="formulario" id="iniciarSesion">
+            <!--Titular [h1] para el texto-->
+            <h1 class="formulario__titulo">Iniciar Sesión</h1>
+            <!--división para el mensaje de error en el inicio de sesión,
+             lleva doble clase
+            se renderizará condicionalmente cuando se presente el caso pertinente
+            *Está provisionalmente activo mientras se codifica el css [estilo]*-->
+            <div class="formulario__mensaje formulario__mensaje--error">
+                <!-- acá se incluyó provisionalmente el mensaje "Combinación incorrecta de usuario y contraseña."
+                para facilitar su edición en CSS, una vez terminado esto se borró-->
+            </div>
+            <!--grupo de entrada [input] con class "formulario__entrada-grupo"
+                y respectivo mensaje, el campo de contraseña es ua copia de esta div-->
+            <div class="formulario__entrada-grupo">
+                <!--campo de input class "formulario__entrada"
+                placeholder corresponde al texto presente antes de escribir en el campo
+                autofocus hace que el cursor empiece acá-->
+                <input type="text" class="formulario__entrada" autofocus placeholder="Nombre de usuario">
+                <div class="formulario__entrada-error-mensaje"></div>
+            </div>
+            <!--campo de contraseña: ver comentario anterior-->
+            <div class="formulario__entrada-grupo">
+                <!--Aclaraciones importantes: nótese que el tipo [type] de entrada
+            es password, CREO que esteo es lo que hace que no se vean caracteres sino circulos
+            cuando se escribe en el campo-->
+                <input type="password" class="formulario__entrada" placeholder="Contraseña">
+                <div class="formulario__entrada-error-mensaje"></div>
+                <!--fin de los campos de entrada-->
+            </div>
+            <!-- creación del botón [button] de "Inicio de Sesión"
+            class de "formulario__boton
+            tipo envío de dato [type="submit"] -->
+            <button class="formulario__boton" type="submit">Iniciar sesión
+            </button>
+            <!--párrafo [p] para el vínculo de "Olvido de contraseña?",
+            "Crear cuenta es una copia de esto"-->
+            <p class="formulario__texto">
+                <!--definición del hipervínculo [a], la dirección se indica en [href], está vacío[#]-->
+                <a href="#" class="formulario__enlace">¿Olvidó su contraseña?</a>
+            </p>
+            <p class="formulario__texto">
+                <!--*Se reemplaza el href por una id, aparentemente para 
+                    que muestre el siguiente formulario* ¡¡ACLARAR!! -->
+               <!--aca falta un href, creo que se pone después en el tutorial --> <a class="formulario__enlace" id="enlaceCreacionCuenta">Crear cuenta.</a>
+            </p>
+        </form>
+        <!-- LO QUE SIGUE A PARTIR DE AQUI ES EL FORMULARIO DE CRACIÓN DE CUENTA, SE CREA A TRAVÉS DE UNA COPIA DEL 
+    FORMULARIO ANTERIOR PERO SE CAMBIAN LOS CAMPOS DE ENTRADA PARA LOS PROPOSITOS ESPECIFICOS DEL FORMULARIO (PERDIR CORREO, CONFIRMAR CLAVE)
+    ¡¡Se cambia el id del formulario!! el JS se encarga de cambiar la asignación de class ="formulario oculto" entre ambos formularios para mostra uno u-->
+    <form class="formulario formulario--oculto" id="crearCuenta">
+        <h1 class="formulario__titulo">Crear cuenta</h1>
+        <div class="formulario__mensaje formulario__mensaje--error">
+        </div>
+        <div class="formulario__entrada-grupo">
+            <input type="text" id="crearNombredeUsuario" class="formulario__entrada" autofocus placeholder="Nombre de usuario">
+            <div class="formulario__entrada-error-mensaje"></div>
+        </div>
+        <div class="formulario__entrada-grupo">
+            <input type="text" class="formulario__entrada" placeholder="Correo electrónico">
+            <div class="formulario__entrada-error-mensaje"></div>
+        </div>
+        <div class="formulario__entrada-grupo">
+            <input type="password" class="formulario__entrada" placeholder="Contraseña">
+            <div class="formulario__entrada-error-mensaje"></div>
+        </div>
+        <div class="formulario__entrada-grupo">
+            <input type="password" class="formulario__entrada"  placeholder="Confirmar contraseña">
+            <div class="formulario__entrada-error-mensaje"></div>
+        </div>
+        <button class="formulario__boton" type="submit">Continuar
+        </button>
+        <p class="formulario__texto">
+            <a class="formulario__enlace" id="enlaceInicioSesion">¿Ya tienes una cuenta? Inicia sesión.</a>
+        </p>
+    </form>
+    </div>
+    <!--Esto indica el directorio de Javascript de donde se
+    tomará la funcionalidad -->
+    <script src="./src/main.js"></script>
+</body>
+
+</html>
+<!--observaciones generales sobre HTML:
+1. es el encargado de disponer los elementos en la página, esto es, definir qué son y dónde van.
+2. debe iniciar declaron el tipo de documento así: "<!DOCTYPE html>"
+3. Se estructura a partir de ELEMENTOS, identificados con TAGS:
+    3.1 Los tags tienen la siguiente estructura:
+        <tag de apertura[body/div/p/a...] | atributos [class/id/type...]>
+        [cuerpo del tag] </[tag de cierre]> (notése el guión en el tag de cierre)
+            Versión simple: <tag atributo="">
+                            cuerpo del elemento 
+                            </tag>
+    3.2 tipos de tag:
+        3.2.1 <html>: abarca el cuerpo del documento de principio a fin
+                      recibe como parámetro el lenguaje del sitio(inglés, español, etc)
+        3.2.2 <head>: la cabecera del documento, incluye información general relacionada
+                      con el título que se muestra arriba de la página y los motores de búsqueda
+        3.2.3 <body>: el cuerpo del documento, aquí se dispondrán los elementos que constituirán 
+                      la página como tal
+        3.2.4 <div>:  una división libre, funcióna similar a lo que sería un corchete, se usa para delimitar
+        3.2.5 <form>: formulario se usa para contener campos de entrada de datos (?)
+        3.2.6 <h[1-6]>: Titular, se usa para inluir una cabecera (header) de texto, se numeran de uno a 6
+                        no se recomienda usar gratuitamente, estan jerarquizados(1>6)
+        3.2.7 <input type="">: crea el campo de entrada de datos
+        3.2.8 <button type="">: un botón
+        3.2.9 <p>: Texto estático
+        3.2.10 <a>: hipervinculo, permite redireccionar a otra parte
+        3.2.11 <script>: ubica el directorio de JS
+    3.3 los atributos definen/marcan el contenido del tag, 
+        en este caso se usaron los siguientes:
+        3.3.1 class="": asigna al elementouna clasificación global (esto es, varios elementos pueden pertenecer 
+                        a la misma class) para poder ser seleccionado(invocado) desde CSS (yJS?)
+        3.3.2 id="": igual a class pero este es único, solo puede estar asociado a un elemento
+                     usar con discreción. Ambos son sensibles a Mayúsculas ("A"!="a"
+        3.2.3 type="": designa el tipo de elemento (si es un campo de contraseña o texto por ejemplo)
+        3.2.4 href="": contiene el hipervinculo)
+    RECOMENDACIÓN: PARA VER QUÉ HACE QUÉ TANTO EN EL HTML COMO EN EL CSS:
+     ABRA EL DOCUMENTO EN UN NAVEGADOR, 
+     BORRE O CAMBIE LA PARTE QUE QUIERA ANALIZAR,
+    IDENTIFIQUE QUÉ CAMBIÓ EN EL NAVEGADOR-->
+    
